@@ -1,13 +1,13 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "C:\\Users\\Bragi\\Desktop\\hak\\mod my\\testmy\\",
+  "WorkspaceRootPath": "C:\\Users\\Bragi\\Desktop\\hak\\cod_decompilirovan\\mymod\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{01634459-E54F-4B30-A742-C4EC34B5D0E7}|testmy\\testmy.csproj|c:\\users\\bragi\\desktop\\hak\\mod my\\testmy\\testmy\\class1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{01634459-E54F-4B30-A742-C4EC34B5D0E7}|testmy\\testmy.csproj|c:\\users\\bragi\\desktop\\hak\\cod_decompilirovan\\mymod\\testmy\\class1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{01634459-E54F-4B30-A742-C4EC34B5D0E7}|testmy\\testmy.csproj|solutionrelative:testmy\\class1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{01634459-E54F-4B30-A742-C4EC34B5D0E7}|testmy\\testmy.csproj|c:\\users\\bragi\\desktop\\hak\\mod my\\testmy\\testmy\\testmy.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
+      "AbsoluteMoniker": "D:0:0:{01634459-E54F-4B30-A742-C4EC34B5D0E7}|testmy\\testmy.csproj|c:\\users\\bragi\\desktop\\hak\\cod_decompilirovan\\mymod\\testmy\\testmy.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
       "RelativeMoniker": "D:0:0:{01634459-E54F-4B30-A742-C4EC34B5D0E7}|testmy\\testmy.csproj|solutionrelative:testmy\\testmy.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
     }
   ],
@@ -24,24 +24,23 @@
               "$type": "Document",
               "DocumentIndex": 1,
               "Title": "testmy.csproj",
-              "DocumentMoniker": "C:\\Users\\Bragi\\Desktop\\hak\\mod my\\testmy\\testmy\\testmy.csproj",
+              "DocumentMoniker": "C:\\Users\\Bragi\\Desktop\\hak\\cod_decompilirovan\\mymod\\testmy\\testmy.csproj",
               "RelativeDocumentMoniker": "testmy\\testmy.csproj",
-              "ToolTip": "C:\\Users\\Bragi\\Desktop\\hak\\mod my\\testmy\\testmy\\testmy.csproj",
+              "ToolTip": "C:\\Users\\Bragi\\Desktop\\hak\\cod_decompilirovan\\mymod\\testmy\\testmy.csproj",
               "RelativeToolTip": "testmy\\testmy.csproj",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAAtAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
-              "WhenOpened": "2025-07-05T21:25:54.265Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-07-05T21:25:54.265Z"
             },
             {
               "$type": "Document",
               "DocumentIndex": 0,
               "Title": "Class1.cs",
-              "DocumentMoniker": "C:\\Users\\Bragi\\Desktop\\hak\\mod my\\testmy\\testmy\\Class1.cs",
+              "DocumentMoniker": "C:\\Users\\Bragi\\Desktop\\hak\\cod_decompilirovan\\mymod\\testmy\\Class1.cs",
               "RelativeDocumentMoniker": "testmy\\Class1.cs",
-              "ToolTip": "C:\\Users\\Bragi\\Desktop\\hak\\mod my\\testmy\\testmy\\Class1.cs",
+              "ToolTip": "C:\\Users\\Bragi\\Desktop\\hak\\cod_decompilirovan\\mymod\\testmy\\Class1.cs",
               "RelativeToolTip": "testmy\\Class1.cs",
-              "ViewState": "AgIAAA8AAAAAAAAAAAAAACMAAAAcAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-06-29T18:13:20.837Z",
               "EditorCaption": ""
