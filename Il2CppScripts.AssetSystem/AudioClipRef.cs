@@ -1,0 +1,52 @@
+using System;
+using System.Runtime.CompilerServices;
+using Il2CppInterop.Common.Attributes;
+using Il2CppInterop.Runtime;
+using Il2CppInterop.Runtime.InteropTypes;
+using UnityEngine;
+
+namespace Il2CppScripts.AssetSystem;
+
+[Serializable]
+public class AudioClipRef : AssetRef<AudioClip>
+{
+	private static readonly IntPtr NativeMethodInfoPtr__ctor_Public_Void_0;
+
+	private static readonly IntPtr NativeMethodInfoPtr__ctor_Public_Void_AudioClip_0;
+
+	static AudioClipRef()
+	{
+		Il2CppClassPointerStore<AudioClipRef>.NativeClassPtr = IL2CPP.GetIl2CppClass("Assembly-Scripts.dll", "Scripts.AssetSystem", "AudioClipRef");
+		IL2CPP.il2cpp_runtime_class_init(Il2CppClassPointerStore<AudioClipRef>.NativeClassPtr);
+		NativeMethodInfoPtr__ctor_Public_Void_0 = IL2CPP.GetIl2CppMethodByToken(Il2CppClassPointerStore<AudioClipRef>.NativeClassPtr, 100670205);
+		NativeMethodInfoPtr__ctor_Public_Void_AudioClip_0 = IL2CPP.GetIl2CppMethodByToken(Il2CppClassPointerStore<AudioClipRef>.NativeClassPtr, 100670206);
+	}
+
+	[CallerCount(0)]
+	[CachedScanResults(RefRangeStart = 0, RefRangeEnd = 0, XrefRangeStart = 70645, XrefRangeEnd = 70646, MetadataInitTokenRva = 0L, MetadataInitFlagRva = 0L)]
+	public unsafe AudioClipRef()
+		: this(IL2CPP.il2cpp_object_new(Il2CppClassPointerStore<AudioClipRef>.NativeClassPtr))
+	{
+		IntPtr* ptr = null;
+		Unsafe.SkipInit(out IntPtr intPtr2);
+		IntPtr intPtr = IL2CPP.il2cpp_runtime_invoke(NativeMethodInfoPtr__ctor_Public_Void_0, IL2CPP.Il2CppObjectBaseToPtrNotNull((Il2CppObjectBase)(object)this), (void**)ptr, ref intPtr2);
+		Il2CppException.RaiseExceptionIfNecessary(intPtr2);
+	}
+
+	[CallerCount(0)]
+	[CachedScanResults(RefRangeStart = 0, RefRangeEnd = 0, XrefRangeStart = 70646, XrefRangeEnd = 70648, MetadataInitTokenRva = 0L, MetadataInitFlagRva = 0L)]
+	public unsafe AudioClipRef(AudioClip audioClip)
+		: this(IL2CPP.il2cpp_object_new(Il2CppClassPointerStore<AudioClipRef>.NativeClassPtr))
+	{
+		IntPtr* ptr = stackalloc IntPtr[1];
+		*ptr = IL2CPP.Il2CppObjectBaseToPtr((Il2CppObjectBase)(object)audioClip);
+		Unsafe.SkipInit(out IntPtr intPtr2);
+		IntPtr intPtr = IL2CPP.il2cpp_runtime_invoke(NativeMethodInfoPtr__ctor_Public_Void_AudioClip_0, IL2CPP.Il2CppObjectBaseToPtrNotNull((Il2CppObjectBase)(object)this), (void**)ptr, ref intPtr2);
+		Il2CppException.RaiseExceptionIfNecessary(intPtr2);
+	}
+
+	public AudioClipRef(IntPtr pointer)
+		: base(pointer)
+	{
+	}
+}

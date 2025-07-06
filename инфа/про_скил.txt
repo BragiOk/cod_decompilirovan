@@ -1,0 +1,105 @@
+# Анализ использования умений (скилов)
+
+Этот документ содержит информацию о том, как вызывать и управлять умениями в коде на основе анализа декомпилированных скриптов.
+
+## 1. Основная функция для вызова умения
+
+Центральной функцией для активации умений является `UseSkill` в классе `IconUseHelper`. Этот метод имитирует нажатие на иконку умения в пользовательском интерфейсе.
+
+**Расположение:** `Il2CppScripts.UI.Icons.IconUseHelper.cs`
+
+**Сигнатура функции:**
+```csharp
+public unsafe static void UseSkill(int skillId, bool ctrl, bool shift)
+```
+
+**Параметры:**
+- `skillId` (`int`): Уникальный идентификатор (ID) умения.
+- `ctrl` (`bool`): Эмуляция зажатия клавиши `Ctrl`. Установите `true`, чтобы имитировать зажатие.
+- `shift` (`bool`): Эм��ляция зажатия клавиши `Shift`. Установите `true`, чтобы имитировать зажатие.
+
+**Пример вызова:**
+```csharp
+// Использовать умение с ID 100 без модификаторов
+Il2CppScripts.UI.Icons.IconUseHelper.UseSkill(100, false, false);
+
+// Использовать умение с ID 250 с зажатым Ctrl
+Il2CppScripts.UI.Icons.IconUseHelper.UseSkill(250, true, false);
+```
+
+## 2. Получение ID умений
+
+Чтобы использовать умение, необходимо знать его `skillId`. Эти данные хранятся в специальных таблицах.
+
+### 2.1. Структура данных умений
+
+- **`SkillEntry.cs`**: Определяет структуру данных для одного умения. Наследуется от `DataEntry`, где и хранится поле `id`.
+  - **Расположение:** `Il2CppScripts.Tables\SkillEntry.cs`
+  - **Ключевые поля:**
+    - `id` (`int`): Уникальный ID умения (наследуется от `DataEntry`).
+    - `name_ru` (`string`): Название умения на русском.
+    - `name_en` (`string`): Название умения на английском.
+    - `mp_consume` (`int`): Стоимость в мане.
+    - и другие...
+
+- **`SkillTable.cs`**: Класс-контейнер, который загружает и хранит все объекты `SkillEntry`.
+  - **Расположение:** `Il2CppScripts.Tables\SkillTable.cs`
+
+### 2.2. Доступ к таблице умений
+
+Доступ ко всем таблицам данных, включая `SkillTable`, осуществляется через статический экземпляр класса `DataTables`.
+
+- **Класс-менеджер:** `DataTables.cs`
+- **Расположение:** `Il2CppScripts.Tables\DataTables.cs`
+- **Свойство для доступа:** `SkillTable`
+
+## 3. Практический пример: Использование умения по названию
+
+Следующий код демонстрирует, как найти умение по его русскому названию, получить его ID и вызвать функцию использования.
+
+```csharp
+using Il2CppScripts.Tables;
+using Il2CppScripts.UI.Icons;
+using System.Linq;
+
+// --- Шаг 1: Получаем доступ к таблице умений ---
+// Доступ к DataTables, скорее всего, осуществляется через статический экземпляр "Instance".
+SkillTable skillTable = DataTables.Instance.SkillTable;
+
+// --- Шаг 2: Находим умение по имени ---
+string skillNameToFind = "Огненный Шар"; // Название умения для поиска
+SkillEntry foundSkill = null;
+
+// Предполагается, что у SkillTable есть метод для получения всех записей.
+// Это может потребовать адаптации в зависимости от реальной реализации.
+// Возможные варианты: .Values, .get_Entries(), или итерация по ID.
+var allSkills = skillTable.get_Entries(); 
+
+foreach (SkillEntry skillEntry in allSkills)
+{
+    if (skillEntry.name_ru == skillNameToFind)
+    {
+        foundSkill = skillEntry;
+        break;
+    }
+}
+
+// --- Шаг 3: Используем умение ---
+if (foundSkill != null)
+{
+    // Поле 'id' наследуется от базового класса DataEntry
+    int skillId = foundSkill.id; 
+    
+    // Вызываем основную функцию
+    IconUseHelper.UseSkill(skillId, false, false);
+    
+    // Для отладки можно вывести сообщение в консоль
+    // Debug.Log($"Успешно вызвано умение '{skillNameToFind}' с ID: {skillId}");
+}
+else
+{
+    // Debug.Log($"Умение '{skillNameToFind}' не найдено в SkillTable.");
+}
+```
+
+Этот пример является наиболее вероятным способом программного вызова умений и должен работать с минимальными адаптациями.
