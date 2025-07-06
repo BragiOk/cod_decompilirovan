@@ -1,3 +1,4 @@
+
 // Импортируем необходимые пространства имен
 using UnityEngine;
 using Il2CppScripts.GameSystem;
@@ -37,9 +38,14 @@ foreach (var npc in allNpcs)
     // Сравниваем имя NPC с искомым
     if (npc.Name == npcNameToFind)
     {
-        targetNpc = (IGameEntity)npc; // Явное приведение типа для исправления ошибки
-        Debug.Log($"[UnityExplorer] Найден NPC: {npc.Name} (ID: {npc.ObjectID})");
-        break; // Выходим из цикла, так как нашли нужного NPC
+        // ИСПРАВЛЕНИЕ: Получаем интерфейс через GetComponent, это более надежный способ
+        targetNpc = npc.GetComponent<IGameEntity>(); 
+        
+        if (targetNpc != null)
+        {
+            Debug.Log($"[UnityExplorer] Найден NPC: {npc.Name} (ID: {npc.ObjectID})");
+            break; // Выходим из цикла, так как нашли нужного NPC
+        }
     }
 }
 
@@ -60,5 +66,5 @@ if (targetNpc != null)
 }
 else
 {
-    Debug.LogError($"[UnityExplorer] ОШИБКА: NPC с ��менем '{npcNameToFind}' не найден в мире.");
+    Debug.LogError($"[UnityExplorer] ОШИБКА: NPC с именем '{npcNameToFind}' не найден в мире.");
 }

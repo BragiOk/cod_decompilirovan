@@ -30,7 +30,8 @@
               "RelativeToolTip": "testmy\\testmy.csproj",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAAtAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
-              "WhenOpened": "2025-07-05T21:25:54.265Z"
+              "WhenOpened": "2025-07-05T21:25:54.265Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
@@ -40,7 +41,7 @@
               "RelativeDocumentMoniker": "testmy\\Class1.cs",
               "ToolTip": "C:\\Users\\Bragi\\Desktop\\hak\\cod_decompilirovan\\mymod\\testmy\\Class1.cs",
               "RelativeToolTip": "testmy\\Class1.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAADkAAAAAAAAAAAAqwEoAAAAuAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-06-29T18:13:20.837Z",
               "EditorCaption": ""

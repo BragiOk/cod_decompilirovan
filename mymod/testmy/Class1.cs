@@ -1,42 +1,90 @@
 ﻿using MelonLoader;
 using UnityEngine;
+using Il2CppScripts.GameSystem;
+using Il2CppScripts.CharacterSystem;
+using Il2CppScripts.Interfaces;
+using Il2CppScripts.Services;
+using System.Collections;
 
-[assembly: MelonInfo(typeof(MyMod.TabbedGuiMod), "Tabbed In-Game GUI", "1.0.2", "YourName")]
+[assembly: MelonInfo(typeof(MyMod.TargetNpcMod), "Target NPC Mod", "1.1", "YourName")]
 [assembly: MelonGame(null, null)]
 
 namespace MyMod
 {
-    public class TabbedGuiMod : MelonMod
+    public class TargetNpcMod : MelonMod
     {
-        private int activeTab = 0;
+        private string npcNameToFind = "Teleporter";
+        private string statusMessage = "Готово к поиску...";
 
         public override void OnGUI()
         {
-            GUI.Box(new Rect(10, 10, 240, 160), "Tabbed GUI");
+            GUI.Box(new Rect(10, 10, 320, 130), "Цель NPC");
 
-            if (activeTab == 0)
+            if (GUI.Button(new Rect(30, 40, 260, 30), $"Найти NPC: {npcNameToFind}"))
             {
-                if (GUI.Button(new Rect(30, 50, 180, 30), "Привет мир"))
-                {
-                    MelonLogger.Msg("Вкладка 1: Привет, мир!");
-                }
+                TrySetTargetNpc(npcNameToFind);
+            }
 
-                if (GUI.Button(new Rect(30, 90, 180, 30), "Перейти на вкладку 2"))
+            GUI.Label(new Rect(30, 80, 260, 25), statusMessage);
+        }
+
+        private void TrySetTargetNpc(string targetName)
+        {
+            var localPlayer = Game.Instance?.User;
+            if (localPlayer == null)
+            {
+                statusMessage = "Локальный игрок не найден!";
+                MelonLogger.Error(statusMessage);
+                return;
+            }
+
+            var npcRoot = WorldInstance.Instance?.NpcRoot;
+            if (npcRoot == null)
+            {
+                statusMessage = "NpcRoot не найден!";
+                MelonLogger.Error(statusMessage);
+                return;
+            }
+
+            var allNpcs = npcRoot.GetComponentsInChildren<Character>();
+            MelonLogger.Msg($"[Target NPC Mod] Всего найдено NPC: {allNpcs.Length}");
+
+            foreach (var npc in allNpcs)
+            {
+                if (npc == null || npc.Name != targetName)
+                    continue;
+
+                var target = npc.TryCast<IGameEntity>();
+                if (target != null)
                 {
-                    activeTab = 1;
+                    Game.Instance.Services.InputManager.RequestTarget(target);
+                    MelonLogger.Msg($"[Target NPC Mod] Отправлен запрос на цель: {npc.Name}");
+
+                    // Проверка через корутину
+                    MelonCoroutines.Start(VerifyTargetLater(localPlayer, target));
+                    return;
                 }
             }
-            else if (activeTab == 1)
-            {
-                if (GUI.Button(new Rect(30, 50, 180, 30), "Привет мир со 2"))
-                {
-                    MelonLogger.Msg("Вкладка 2: Привет, мир!");
-                }
 
-                if (GUI.Button(new Rect(30, 90, 180, 30), "Вернуться на вкладку 1"))
-                {
-                    activeTab = 0;
-                }
+            statusMessage = $"NPC с именем '{targetName}' не найден.";
+            MelonLogger.Error(statusMessage);
+        }
+
+        private IEnumerator VerifyTargetLater(Character localPlayer, IGameEntity expectedTarget)
+        {
+            yield return new WaitForSeconds(0.5f); // Подождать 0.5 секунды для обновления цели
+
+            if (localPlayer.Target != null && localPlayer.Target.ObjectID == expectedTarget.ObjectID)
+            {
+                statusMessage = $"✅ Цель установлена: {expectedTarget.Name}";
+                MelonLogger.Msg(statusMessage);
+            }
+            else
+            {
+                var currentTarget = localPlayer.Target;
+                var currentName = currentTarget?.Name ?? "null";
+                statusMessage = $"❌ Цель не установлена. Сейчас: {currentName}";
+                MelonLogger.Warning(statusMessage);
             }
         }
     }
