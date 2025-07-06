@@ -1,0 +1,5 @@
+C:\Users\Bragi\source\repos\testmy\testmy\obj\Debug\net472\testmy.csproj.AssemblyReference.cache
+C:\Users\Bragi\source\repos\testmy\testmy\obj\Debug\net472\testmy.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Bragi\source\repos\testmy\testmy\obj\Debug\net472\testmy.AssemblyInfoInputs.cache
+C:\Users\Bragi\source\repos\testmy\testmy\obj\Debug\net472\testmy.AssemblyInfo.cs
+C:\Users\Bragi\source\repos\testmy\testmy\obj\Debug\net472\testmy.csproj.CoreCompileInputs.cache
